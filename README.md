@@ -1,4 +1,8 @@
 # CollateralRails V2
+## 🎥 Demo
+
+**The CollateralRails demo video is available in this GitHub repository: [`colateral-rails-demo.mp4`](./CollateralRails-Demo.mp4)**
+
 
 **Collateral-backed trust infrastructure for agentic commerce.**
 
