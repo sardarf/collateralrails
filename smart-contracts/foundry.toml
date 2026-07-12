@@ -1,0 +1,29 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.28"
+optimizer = true
+optimizer_runs = 200
+evm_version = "paris"
+
+# Demo timing (seconds) is set via deploy-script env, not compile-time.
+
+[rpc_endpoints]
+arbitrum_sepolia = "${ARBITRUM_SEPOLIA_RPC}"
+arbitrum = "${ARBITRUM_RPC}"
+avalanche_fuji = "${AVALANCHE_FUJI_RPC}"
+avalanche = "${AVALANCHE_RPC}"
+robinhood = "${ROBINHOOD_CHAIN_RPC}"   # Robinhood Chain-ready config; deploy only when executed
+
+[etherscan]
+arbitrum_sepolia = { key = "${ARBISCAN_API_KEY}", url = "https://api-sepolia.arbiscan.io/api" }
+arbitrum = { key = "${ARBISCAN_API_KEY}", url = "https://api.arbiscan.io/api" }
+avalanche_fuji = { key = "${SNOWTRACE_API_KEY}", url = "https://api.routescan.io/v2/network/testnet/evm/43113/etherscan" }
+avalanche = { key = "${SNOWTRACE_API_KEY}", url = "https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan" }
+
+[lint]
+# keccak256(abi.encode(...)) for the EIP-712 struct hash matches the OZ /
+# EIP-712 reference implementation and only runs on the dispute path;
+# readability is preferred over the inline-assembly micro-optimisation.
+exclude_lints = ["asm-keccak256"]

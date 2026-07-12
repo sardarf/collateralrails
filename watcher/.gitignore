@@ -1,0 +1,7 @@
+# Generated per-deployment by scripts/wire-env.mjs — local addresses, not committed.
+# The committed template is deployment.example.json.
+deployment.json
+
+# Local watcher state (indexed payments/claims) and dep installs.
+watcher-state.json
+node_modules/

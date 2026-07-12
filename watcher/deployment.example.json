@@ -1,0 +1,8 @@
+{
+  "rpc": "http://localhost:8545",
+  "usdc": "0x...",
+  "registry": "0x...",
+  "policy": "0x...",
+  "router": "0x...",
+  "cm": "0x..."
+}

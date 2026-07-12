@@ -1,0 +1,41 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: smart-contracts
+    steps:
+      - uses: actions/checkout@v4
+        with: { submodules: recursive }
+      - uses: foundry-rs/foundry-toolchain@v1
+      - run: forge build --deny-warnings
+      - run: forge test -vvv
+
+  runtime-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install
+        working-directory: smart-contracts
+      - run: SAVE=1 node compile.js src/MockUSDC.sol src/ReceiptLib.sol src/PolicyManager.sol src/BondedRegistry.sol src/SettlementRouter.sol src/ClaimManager.sol
+        working-directory: smart-contracts
+      - run: node e2e.mjs
+        working-directory: smart-contracts
+      - run: npm install
+        working-directory: watcher
+      - run: node watcher/src/selftest.mjs
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: cd web && npm install && npx nuxt build

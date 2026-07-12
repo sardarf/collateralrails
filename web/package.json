@@ -1,0 +1,24 @@
+{
+  "name": "collateralrails-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "e2e": "playwright test",
+    "e2e:report": "playwright show-report e2e/report",
+    "e2e:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "nuxt": "^4.4.8",
+    "viem": "^2.54.6",
+    "@fontsource/fraunces": "^5.2.9",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}

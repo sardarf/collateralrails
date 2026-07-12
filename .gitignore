@@ -1,0 +1,4 @@
+# Nested installs across all packages (smart-contracts/, web/, watcher/).
+# Build artifacts (out/, cache/, broadcast/) and .env live in each package's
+# own .gitignore now that the toolchains are split.
+node_modules/
